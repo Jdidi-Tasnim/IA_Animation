@@ -1,5 +1,6 @@
 import tkinter as tk
 from queue import PriorityQueue
+from bfs import run_bfs
 
 # Constants
 GRID_SIZE = 20  # Number of cells per row/column
@@ -40,7 +41,7 @@ class PathfindingApp:
         self.a_star_button.pack(side="left")
         self.profondeur_button = tk.Button(self.root, text="recherche en profondeur", command=lambda:print("") )
         self.profondeur_button.pack(side="left")
-        self.largeur_button = tk.Button(self.root, text="recherche en largeur", command=lambda:print("") )
+        self.largeur_button = tk.Button(self.root, text="recherche en largeur", command=lambda: run_bfs(self))
         self.largeur_button.pack(side="left")
         self.reset_button = tk.Button(self.root, text="Reset", command=self.reset_grid)
         self.reset_button.pack(side="left")
