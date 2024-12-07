@@ -1,18 +1,11 @@
 import tkinter as tk
 from queue import PriorityQueue
-
+from tree.node import node
+import time
+from recherche_profondeur.profondeur import print_profondeur_path
+from constants import *
 # Constants
-GRID_SIZE = 20  # Number of cells per row/column
-CELL_SIZE = 20  # Cell size in pixels
-START_COLOR = "green"
-END_COLOR = "red"
-PATH_COLOR = "yellow"
-VISITED_COLOR = "purple"
-OBSTACLE_COLOR = "black"
-EMPTY_COLOR = "white"
 
-# Directions for neighbors
-DIRECTIONS = [(0, 1), (1, 0), (0, -1), (-1, 0)]
 
 # A* and Dijkstra GUI
 class PathfindingApp:
@@ -34,15 +27,15 @@ class PathfindingApp:
         # Mouse bindings
         self.canvas.bind("<Button-1>", self.add_obstacle)
         self.canvas.bind("<Button-3>", self.set_start_or_end)
-
+        
         # Buttons
         self.a_star_button = tk.Button(self.root, text="A*", command=lambda: print("a*"))
         self.a_star_button.pack(side="left")
-        self.profondeur_button = tk.Button(self.root, text="recherche en profondeur", command=lambda:print("") )
+        self.profondeur_button = tk.Button(self.root, text="recherche en profondeur", command=lambda:print_profondeur_path(self))
         self.profondeur_button.pack(side="left")
         self.largeur_button = tk.Button(self.root, text="recherche en largeur", command=lambda:print("") )
         self.largeur_button.pack(side="left")
-        self.reset_button = tk.Button(self.root, text="Reset", command=self.reset_grid)
+        self.reset_button = tk.Button(self.root, text="Reset", command=self.remove_previous_pattern)
         self.reset_button.pack(side="left")
     def create_grid(self):
         for row in range(GRID_SIZE):
@@ -76,6 +69,12 @@ class PathfindingApp:
                 self.end = (row, col)
             self.reset_grid()
 
+    def remove_previous_pattern(self):
+        for row in range(GRID_SIZE):
+            for col in range(GRID_SIZE):
+                if self.grid[row][col]["distance"] != -1 and (row, col) != self.start and (row, col) != self.end:
+                    self.canvas.itemconfig(self.grid[row][col]["canva"], fill=EMPTY_COLOR)
+                    self.grid[row][col]["distance"] = row + col
     def reset_grid(self):
         """Reset the grid to its initial state."""
         for row in range(GRID_SIZE):
@@ -87,6 +86,12 @@ class PathfindingApp:
 
 # Run the application
 if __name__ == "__main__":
+    root = node((0,0),None)
+    root.add_child(node((0,1),root))
+    root.add_child(node((1,0),root))
+    root.add_child(node((1,1),root))
+    print(root.get_all_children_data())
     root = tk.Tk()
     app = PathfindingApp(root)
     root.mainloop()
+    
