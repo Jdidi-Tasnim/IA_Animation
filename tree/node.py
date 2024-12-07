@@ -1,6 +1,6 @@
 
 class node :
- 
+
 
     def __init__(self,data,parent):
         self.data=data
@@ -23,6 +23,12 @@ class node :
         self.data=data
     def set_parent(self,parent):
         self.parent=parent
+    def get_all_children(self):
+        children=[]
+        for child in self.children:
+            children.append(child)
+            children+=child.get_all_children()
+        return children
     def get_all_children_data(self):
         children=[]
         for child in self.children:
