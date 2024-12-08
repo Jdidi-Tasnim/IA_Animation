@@ -8,6 +8,7 @@ def run_bfs(app):
     """Perform Breadth-First Search from start to end with animation."""
     # Clear previous paths and visited cells
     app.remove_previous_pattern()
+    t1 = time.time()
     queue = deque()
     queue.append(app.start)
     visited = set()
@@ -36,6 +37,7 @@ def run_bfs(app):
                     app.visited_coloring(node((neighbor_row,neighbor_col)))    # Pause for animation effect
 
     # Reconstruct and visualize the path from end to start
+    t2 = time.time()
     current = app.end
     if current in parent or current == app.start:
         path=[]
@@ -45,6 +47,10 @@ def run_bfs(app):
              # Pause for animation effect
         path.append(app.start)
         app.draw_path_line(path)
+
+        print("=================    BFS    ================")
+        print("Path found, using BFS, in",t2-t1,"seconds.")
+        print("N° of nodes visited:",len(visited)-1)
     else:
         # No path found
         messagebox.showinfo("No Path", "No path found to the destination.")

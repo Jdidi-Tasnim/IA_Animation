@@ -6,7 +6,7 @@ PATH_COLOR = "yellow"
 VISITED_COLOR = "purple"
 OBSTACLE_COLOR = "black"
 EMPTY_COLOR = "white"
-ANIMATION_SPEED = 1 # Milliseconds
+ANIMATION_SPEED = 10 # Milliseconds
 
 # Directions for neighbors
 DIRECTIONS = [(0, 1), (1, 0), (0, -1), (-1, 0)]
