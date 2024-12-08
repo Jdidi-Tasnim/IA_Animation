@@ -43,3 +43,11 @@ class node :
             for child in self.children:
                 leafs.append(child.get_leaf())
         return leafs
+    def get_path(self,app):
+        path=[]
+        actual_node=self
+        while (actual_node.get_data()[0],actual_node.get_data()[1]) !=app.start:
+            path.append(actual_node.get_data())
+            actual_node=actual_node.get_parent()
+        path.append(app.start)
+        return path
