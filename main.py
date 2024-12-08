@@ -1,8 +1,10 @@
 import tkinter as tk
+from tkinter import messagebox
 from tree.node import node
 
 from recherche_profondeur.profondeur import print_profondeur_path
 from A_star.a_star_algo import display_A_star_path
+from recherche_largeur.bfs import run_bfs
 from constants import *
 # Constants
 
@@ -12,15 +14,34 @@ class PathfindingApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Pathfinding Visualization")
-        # Canvas
-        self.canvas = tk.Canvas(self.root, width=GRID_SIZE * CELL_SIZE, height=GRID_SIZE * CELL_SIZE)
-        self.canvas.pack()
 
         # Initialize grid
         self.start = (0, 0)
         self.end = (GRID_SIZE - 1, GRID_SIZE - 1)
         self.grid = [[{"canva":0,"distance":self.calcul_distance((r,c),self.end)} for r in range(GRID_SIZE)] for c in range(GRID_SIZE)]
+        self.canvas = tk.Canvas(self.root, width=GRID_SIZE * CELL_SIZE, height=GRID_SIZE * CELL_SIZE)
+        self.canvas.pack()
         
+        # Canvas
+       # Label and input for "Name"
+        """
+        self.frame = tk.Frame(self.root)
+        self.frame.pack(pady=10)
+        tk.Label(self.frame, text="Vitesse:").pack(side="left", padx=5)
+        self.entry_speed = tk.Entry(self.frame, width=10, textvariable=ANIMATION_SPEED)
+        self.entry_speed.pack(side="left", padx=5)
+        self.entry_speed.insert(0, str(ANIMATION_SPEED))
+        # Label and Entry for "Age"
+        tk.Label(self.frame, text="Dimension:").pack(side="left", padx=5)
+        self.entry_dim = tk.Entry(self.frame, width=5)
+        self.entry_dim.pack(side="left", padx=5)
+        self.entry_dim.insert(0, str(GRID_SIZE))
+
+        # Button to trigger input retrieval
+        self.button = tk.Button(root, text="enter", command=self.update_matrix())
+        self.button.pack(pady=10)
+        """
+
         self.create_grid()
         self.path_lines=[]
         # Mouse bindings
@@ -32,10 +53,19 @@ class PathfindingApp:
         self.a_star_button.pack(side="left")
         self.profondeur_button = tk.Button(self.root, text="recherche en profondeur", command=lambda:print_profondeur_path(self))
         self.profondeur_button.pack(side="left")
-        self.largeur_button = tk.Button(self.root, text="recherche en largeur", command=lambda:print("") )
+        self.largeur_button = tk.Button(self.root, text="recherche en largeur", command=lambda:run_bfs(self) )
         self.largeur_button.pack(side="left")
-        self.reset_button = tk.Button(self.root, text="Reset", command=self.remove_previous_pattern)
+        self.reset_button = tk.Button(self.root, text="Reset", command=self.reset_grid)
         self.reset_button.pack(side="left")
+
+    def update_matrix(self):
+        ANIMATION_SPEED=int(self.entry_speed.get())
+        GRID_SIZE=int(self.entry_dim.get())
+        print(ANIMATION_SPEED)
+        self.grid = [[{"canva":0,"distance":self.calcul_distance((r,c),self.end)} for r in range(GRID_SIZE)] for c in range(GRID_SIZE)]
+        self.create_grid()
+        
+
     def create_grid(self):
         for row in range(GRID_SIZE):
             for col in range(GRID_SIZE):
