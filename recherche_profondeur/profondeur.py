@@ -24,9 +24,14 @@ def recherche_en_profondeur(app, actual_node,root=node((0,0),None)):
 def print_profondeur_path(app):
     app.remove_previous_pattern()
     root_node=node((0,0),None)
+    t1=time.time()
     result,last_node=recherche_en_profondeur(app,root_node,root_node)
+    t2=time.time()
     if result:
         path=last_node.get_path(app)
         app.draw_path_line(path)
+        print("=================    DFS    ================")
+        print("Path found, using DFS, in",t2-t1,"seconds.")
+        print("N° of nodes visited:",len(root_node.get_all_children_data()))    
     else:
         messagebox.showinfo("No Path", "No path found to the destination.")
