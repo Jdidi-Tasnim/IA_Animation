@@ -6,6 +6,8 @@ from recherche_profondeur.profondeur import print_profondeur_path
 from A_star.a_star_algo import display_A_star_path
 from recherche_largeur.bfs import run_bfs
 from constants import *
+
+import sys
 # Constants
 
 
@@ -45,6 +47,7 @@ class PathfindingApp:
         self.create_grid()
         self.path_lines=[]
         # Mouse bindings
+        self.canvas.bind("<B1-Motion>", self.add_obstacle)
         self.canvas.bind("<Button-1>", self.add_obstacle)
         self.canvas.bind("<Button-3>", self.set_start_or_end)
         
@@ -142,6 +145,8 @@ class PathfindingApp:
 
 # Run the application
 if __name__ == "__main__":
+    sys.setrecursionlimit(RECURSION_LIMIT)
+
     root = tk.Tk()
     app = PathfindingApp(root)
     root.mainloop()
