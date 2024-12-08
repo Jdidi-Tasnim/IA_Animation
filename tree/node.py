@@ -1,8 +1,8 @@
 
 class node :
- 
 
-    def __init__(self,data,parent):
+
+    def __init__(self,data,parent=None):
         self.data=data
         self.children=[]
         self.parent=parent
@@ -23,6 +23,12 @@ class node :
         self.data=data
     def set_parent(self,parent):
         self.parent=parent
+    def get_all_children(self):
+        children=[]
+        for child in self.children:
+            children.append(child)
+            children+=child.get_all_children()
+        return children
     def get_all_children_data(self):
         children=[]
         for child in self.children:
@@ -37,3 +43,11 @@ class node :
             for child in self.children:
                 leafs.append(child.get_leaf())
         return leafs
+    def get_path(self,app):
+        path=[]
+        actual_node=self
+        while (actual_node.get_data()[0],actual_node.get_data()[1]) !=app.start:
+            path.append(actual_node.get_data())
+            actual_node=actual_node.get_parent()
+        path.append(app.start)
+        return path
