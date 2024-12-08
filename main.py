@@ -1,6 +1,7 @@
 import tkinter as tk
 from queue import PriorityQueue
 from bfs import run_bfs
+from astar import run_astar
 
 # Constants
 GRID_SIZE = 20  # Number of cells per row/column
@@ -37,7 +38,7 @@ class PathfindingApp:
         self.canvas.bind("<Button-3>", self.set_start_or_end)
 
         # Buttons
-        self.a_star_button = tk.Button(self.root, text="A*", command=lambda: print("a*"))
+        self.a_star_button = tk.Button(self.root, text="A*", command=lambda: run_astar(self))
         self.a_star_button.pack(side="left")
         self.profondeur_button = tk.Button(self.root, text="recherche en profondeur", command=lambda:print("") )
         self.profondeur_button.pack(side="left")
