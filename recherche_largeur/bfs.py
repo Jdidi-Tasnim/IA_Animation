@@ -25,7 +25,7 @@ def run_bfs(app):
     #on va ajouter le noeud de départ à la liste des noeuds visités immédiatement
     visited.add(app.start)
     #on va créer un dictionnaire pour garder le parent de chaque noeud visitée pour reconstruire le chemin
-    parent = {}  # To reconstruct the path
+    parent = {}  
 #parcourir la file d'attente jusqu'à ce qu'elle soit vide
     while queue:
         #on va récupérer le premier élément de la file d'attente (couche par couche "pronfondeur uniforme")
