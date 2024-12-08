@@ -11,7 +11,7 @@ from tkinter import messagebox
 #une fonction pour exécuter la recherche en largeur pour trouver le chemin le plus court
 def run_bfs(app):
     """Perform Breadth-First Search from start to end with animation."""
-    # Clear previous paths and visited cells
+   
     #app l'objet qui contient les informations de l'interface graphique (position de départ, position d'arrivée, grille, canvas)
     # remove pour supprimer les anciens chemins et les cellules visitées
     app.remove_previous_pattern()
