@@ -52,7 +52,8 @@ def print_profondeur_path(app):
         app.draw_path_line(path)
         print("=================    DFS    ================")
         print("Path found, using DFS, in",t2-t1,"seconds.")
-        print("N° of nodes visited:",len(root_node.get_all_children_data()))    
+        print("N° of nodes visited:",len(root_node.get_all_children_data()))
+        print("longueur du chemin :",len(path))    
         #sinon on affiche un message d'erreur
     else:
         messagebox.showinfo("No Path", "No path found to the destination.")

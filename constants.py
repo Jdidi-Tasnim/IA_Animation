@@ -1,6 +1,6 @@
 RECURSION_LIMIT = 2500  # increase it if u increase the size of the grid
-GRID_SIZE = 35  # Number of cells per row/column
-CELL_SIZE = 18  # Cell size in pixels
+GRID_SIZE = 20  # Number of cells per row/column
+CELL_SIZE = 20  # Cell size in pixels
 START_COLOR = "green"
 END_COLOR = "red"
 PATH_COLOR = "yellow"

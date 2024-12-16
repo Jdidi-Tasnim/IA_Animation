@@ -141,7 +141,8 @@ class PathfindingApp:
             self.path_lines.append(line_id)
 
     def calcul_distance(self,a,b):
-        return abs(a[0]-b[0])+abs(a[1]-b[1])
+        return ((a[0]-b[0])**2+(a[1]-b[1])**2)**0.5
+        #return abs(a[0]-b[0])+abs(a[1]-b[1])
 
 # Run the application
 if __name__ == "__main__":

@@ -67,6 +67,7 @@ def run_bfs(app):
         print("=================    BFS    ================")
         print("Path found, using BFS, in",t2-t1,"seconds.")
         print("N° of nodes visited:",len(visited)-1)
+        print("longueur du chemin :",len(path))
     else:
         # SION on affiche un message d'erreur
         messagebox.showinfo("No Path", "No path found to the destination.")

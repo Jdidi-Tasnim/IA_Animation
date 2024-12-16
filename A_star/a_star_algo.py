@@ -72,10 +72,12 @@ def display_A_star_path(app,init_cords):
     result,last_node,n=recherche_A_star(app,init_cords)
     t2=time.time()
     if result:
-        path=path=last_node.get_path(app)
+        path=last_node.get_path(app)
         app.draw_path_line(path)
         print("=================    A*    ================")
         print("Path found, using A*, in",t2-t1,"seconds.")
         print("N° of nodes visited:",n)
+        print("longueur du chemin :",len(path))
+
     else :
         messagebox.showinfo("No Path", "No path found to the destination.")
