@@ -120,8 +120,6 @@ Contributions are welcome! To contribute:
    ```
 5. Open a Pull Request.
 
-## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 Special thanks to all contributors and open-source libraries that made this project possible.
