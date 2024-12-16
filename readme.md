@@ -1,5 +1,5 @@
 # Pathfinding Visualization
-
+![Pathfinding Visualization](screenshot/example.png)
 ## Description
 This project is a **pathfinding algorithm visualizer** built with Python. It allows users to create a grid map, set obstacles, and test different pathfinding algorithms to observe how each algorithm explores the grid and finds a path from a start point (green) to an end point (red). It provides an interactive and educational experience to understand algorithms like A\*, Depth-First Search (DFS), and Breadth-First Search (BFS).
 
@@ -89,9 +89,6 @@ The `constants.py` file contains global settings for the project, including:
    ```python
    DIRECTIONS = [(0, 1), (1, 0), (0, -1), (-1, 0)]
    ```
-
-## Screenshot
-![Pathfinding Visualization](screenshot/example.png)
 
 ## Algorithms Explained
 - **A\***: A heuristic-based search algorithm that finds the shortest path efficiently.
